@@ -9,7 +9,7 @@ public class Word implements Comparable<Word> {
 
     public Word(String word) {
         data = word;
-        key = word.replace("-", "");
+        key = word.replace("-", "").replace(".", "");
     }
 
     public String getKey() {
