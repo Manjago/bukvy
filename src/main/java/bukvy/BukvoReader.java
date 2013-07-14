@@ -59,8 +59,12 @@ public class BukvoReader {
             return;
         }
 
-        data.add(new Word(token));
+        Word w = new Word(token);
+        if (w.getKey().equals(prefix)) {
+            return;
+        }
 
+        data.add(w);
 
     }
 }
