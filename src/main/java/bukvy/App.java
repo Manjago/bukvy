@@ -2,9 +2,6 @@ package bukvy;
 
 import java.util.List;
 
-/**
- * Hello world!
- */
 public class App {
     public static void main(String[] args) {
         BukvoReader r = new BukvoReader("Н");
@@ -12,6 +9,7 @@ public class App {
         if (result == null) {
             System.out.println("null");
         } else {
+            System.out.println("size " + result.size());
             for (String s : result) {
                 System.out.println(s);
             }
