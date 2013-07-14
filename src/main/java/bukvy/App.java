@@ -8,7 +8,7 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
         BukvoReader r = new BukvoReader("Н");
-        List<Word> result = r.doRead("D:\\Projects\\bukvy\\test.txt");
+        List<Word> result = r.doRead("D:\\Projects\\bukvy\\Н.txt");
         if (result == null) {
             System.out.println("null");
         } else {
