@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author Manjago (kirill@temnenkov.com)
@@ -48,8 +49,18 @@ public class BukvoReader {
         }
 
         String[] e = line.split(" ");
-        if (e.length > 0) {
-            data.add(e[0]);
+        if (e.length == 0) {
+            return;
         }
+
+        String token = e[0];
+        String upperToken = token.toUpperCase(Locale.getDefault());
+        if (!token.equals(upperToken)) {
+            return;
+        }
+
+        data.add(token);
+
+
     }
 }
