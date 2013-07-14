@@ -17,8 +17,8 @@ public class BukvoReader {
         this.prefix = prefix;
     }
 
-    public List<String> doRead(String path) {
-        List<String> result = new ArrayList<String>();
+    public List<Word> doRead(String path) {
+        List<Word> result = new ArrayList<Word>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
             String sCurrentLine;
@@ -33,7 +33,7 @@ public class BukvoReader {
         return result;
     }
 
-    private void tryAdd(String rawLine, List<String> data) {
+    private void tryAdd(String rawLine, List<Word> data) {
         if (rawLine == null) {
             return;
         }
@@ -59,7 +59,7 @@ public class BukvoReader {
             return;
         }
 
-        data.add(token);
+        data.add(new Word(token));
 
 
     }
