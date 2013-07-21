@@ -11,7 +11,7 @@ public class Word implements Comparable<Word> {
     public Word(String word, int sourceLine) {
         data = word;
         //todo переписать
-        key = word.replace("-", "").replace(".", "").replace("’", "");
+        key = word.replace("-", "").replace(".", "").replace("’", "").replace("Ё", "Е");
         this.sourceLine = sourceLine;
     }
 
