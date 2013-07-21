@@ -6,11 +6,13 @@ package bukvy;
 public class Word implements Comparable<Word> {
     private final String key;
     private final String data;
+    private final int sourceLine;
 
-    public Word(String word) {
+    public Word(String word, int sourceLine) {
         data = word;
         //todo переписать
         key = word.replace("-", "").replace(".", "").replace("’", "");
+        this.sourceLine = sourceLine;
     }
 
     public String getKey() {
@@ -31,6 +33,7 @@ public class Word implements Comparable<Word> {
         final StringBuilder sb = new StringBuilder("Word{");
         sb.append("key='").append(key).append('\'');
         sb.append(", data='").append(data).append('\'');
+        sb.append(", sourceLine=").append(sourceLine);
         sb.append('}');
         return sb.toString();
     }

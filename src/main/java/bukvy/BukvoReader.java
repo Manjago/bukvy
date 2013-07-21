@@ -22,9 +22,10 @@ public class BukvoReader {
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
             String sCurrentLine;
+            int lineNum = 0;
 
             while ((sCurrentLine = br.readLine()) != null) {
-                tryAdd(sCurrentLine, result);
+                tryAdd(sCurrentLine, result, ++lineNum);
             }
 
         } catch (IOException e) {
@@ -33,7 +34,7 @@ public class BukvoReader {
         return result;
     }
 
-    private void tryAdd(String rawLine, List<Word> data) {
+    private void tryAdd(String rawLine, List<Word> data, int linenum) {
         if (rawLine == null) {
             return;
         }
@@ -59,7 +60,7 @@ public class BukvoReader {
             return;
         }
 
-        Word w = new Word(token);
+        Word w = new Word(token, linenum);
         if (w.getKey().equals(prefix)) {
             return;
         }

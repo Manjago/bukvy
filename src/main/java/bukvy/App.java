@@ -6,9 +6,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class App {
+    //todo sonar check
     public static void main(String[] args) {
-        BukvoReader r = new BukvoReader("Н");
-        List<Word> result = r.doRead("D:\\Projects\\bukvy\\Н.txt");
+        //todo get data from args
+        BukvoReader r = new BukvoReader("О");
+        List<Word> result = r.doRead("D:\\Projects\\bukvy\\O.txt");
         if (result == null) {
             System.out.println("null");
         } else {
