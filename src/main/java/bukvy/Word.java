@@ -9,6 +9,7 @@ public class Word implements Comparable<Word> {
 
     public Word(String word) {
         data = word;
+        //todo переписать
         key = word.replace("-", "").replace(".", "").replace("’", "");
     }
 
