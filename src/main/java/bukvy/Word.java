@@ -10,8 +10,14 @@ public class Word implements Comparable<Word> {
 
     public Word(String word, int sourceLine) {
         data = word;
-        //todo переписать
-        key = word.replace("-", "").replace(".", "").replace("’", "").replace("Ё", "Е");
+
+        String k = word.replaceAll("-|\\.|’", "");
+        if (k.contains("Ё")) {
+            k = k.replace("Ё", "Е");
+        }
+
+        key = k;
+
         this.sourceLine = sourceLine;
     }
 

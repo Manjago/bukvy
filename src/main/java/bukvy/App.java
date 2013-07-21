@@ -10,7 +10,6 @@ public final class App {
     private App() {
     }
 
-    //todo sonar check
     public static void main(String[] args) {
         //todo get data from args
         BukvoReader r = new BukvoReader("О");
