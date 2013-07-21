@@ -1,8 +1,10 @@
 package bukvy;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -19,7 +21,7 @@ public class BukvoReader {
 
     public List<Word> doRead(String path) {
         List<Word> result = new ArrayList<Word>();
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), Charset.forName("UTF-8")))) {
 
             String sCurrentLine;
             int lineNum = 0;
@@ -49,23 +51,31 @@ public class BukvoReader {
             return;
         }
 
-        String[] e = line.split(" ");
-        if (e.length == 0) {
-            return;
-        }
-
-        String token = e[0];
-        String upperToken = token.toUpperCase(Locale.getDefault());
-        if (!token.equals(upperToken)) {
-            return;
-        }
-
-        Word w = new Word(token, linenum);
-        if (w.getKey().equals(prefix)) {
+        Word w = getWord(linenum, line);
+        if (w == null) {
             return;
         }
 
         data.add(w);
 
+    }
+
+    private Word getWord(int linenum, String line) {
+        String[] e = line.split(" ");
+        if (e.length == 0) {
+            return null;
+        }
+
+        String token = e[0];
+        String upperToken = token.toUpperCase(Locale.getDefault());
+        if (!token.equals(upperToken)) {
+            return null;
+        }
+
+        Word w = new Word(token, linenum);
+        if (w.getKey().equals(prefix)) {
+            return null;
+        }
+        return w;
     }
 }

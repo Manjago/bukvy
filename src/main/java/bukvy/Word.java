@@ -29,6 +29,24 @@ public class Word implements Comparable<Word> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Word word = (Word) o;
+        return getKey().compareTo(word.getKey()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return key != null ? key.hashCode() : 0;
+    }
+
+    @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Word{");
         sb.append("key='").append(key).append('\'');
