@@ -11,9 +11,15 @@ public final class App {
     }
 
     public static void main(String[] args) {
-        //todo get data from args
-        BukvoReader r = new BukvoReader("О");
-        List<Word> result = r.doRead("D:\\Projects\\bukvy\\O.txt");
+        if (args.length < 2){
+            System.out.println("need two args - letter and filename");
+        }
+
+        String letter = args[0];
+        String filename = args[1];
+
+        BukvoReader r = new BukvoReader(letter);
+        List<Word> result = r.doRead(filename);
 
         System.out.println("size " + result.size());
         for (Word s : result) {
